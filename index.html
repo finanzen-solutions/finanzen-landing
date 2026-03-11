@@ -8,227 +8,416 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary:         '#F7622C',
+                        'primary-dark':  '#E3521B',
+                        'primary-darker':'#D14021',
+                    },
+                    fontFamily: {
+                        sans:    ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        manrope: ['Manrope', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container header__container">
-            <a href="/" class="header__logo">
-                <img src="assets/logo-header.svg" alt="Finanzen" width="165" height="29">
+<body class="bg-[#F8F7F5] text-[#1C170D] font-sans overflow-x-hidden antialiased pt-[73px]">
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[rgba(248,247,245,0.8)] backdrop-blur-sm border-b border-[#E8DFCE]">
+        <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0 flex items-center justify-between py-4">
+
+            <a href="/" class="shrink-0">
+                <img src="assets/logo-header.svg" alt="Finanzen" class="h-[29px] w-auto">
             </a>
-            <nav class="header__nav">
-                <a href="#" class="header__link">Inicio</a>
-                <a href="#quienes-somos" class="header__link">¿Quiénes somos?</a>
-                <a href="#preguntas" class="header__link">Preguntas frecuentes</a>
+
+            <nav class="hidden md:flex gap-10">
+                <a href="#"              class="text-sm font-medium text-black hover:text-primary transition-colors duration-150">Inicio</a>
+                <a href="#quienes-somos" class="text-sm font-medium text-black hover:text-primary transition-colors duration-150">¿Quiénes somos?</a>
+                <a href="#preguntas"     class="text-sm font-medium text-black hover:text-primary transition-colors duration-150">Preguntas frecuentes</a>
             </nav>
-            <a href="#descargar" class="btn btn--primary btn--sm">Descarga la app</a>
+
+            <div class="flex items-center gap-3">
+                <a href="#descargar" class="hidden md:inline-flex items-center justify-center font-manrope font-bold text-sm text-white bg-primary hover:bg-primary-dark transition-colors duration-150 rounded-[10px] h-10 px-6">
+                    Descarga la app
+                </a>
+                <!-- Hamburger (mobile only) -->
+                <button id="menu-btn" class="md:hidden flex flex-col justify-center gap-[5px] p-2 -mr-2" aria-label="Abrir menú" aria-expanded="false">
+                    <span class="block w-5 h-0.5 bg-black"></span>
+                    <span class="block w-5 h-0.5 bg-black"></span>
+                    <span class="block w-5 h-0.5 bg-black"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[rgba(248,247,245,0.98)] border-t border-[#E8DFCE]">
+            <nav class="max-w-[1280px] mx-auto px-5 py-4 flex flex-col gap-4">
+                <a href="#"              class="text-sm font-medium text-black hover:text-primary transition-colors">Inicio</a>
+                <a href="#quienes-somos" class="text-sm font-medium text-black hover:text-primary transition-colors">¿Quiénes somos?</a>
+                <a href="#preguntas"     class="text-sm font-medium text-black hover:text-primary transition-colors">Preguntas frecuentes</a>
+                <a href="#descargar" class="self-start inline-flex items-center justify-center font-manrope font-bold text-sm text-white bg-primary hover:bg-primary-dark rounded-[10px] h-10 px-6 mt-2">
+                    Descarga la app
+                </a>
+            </nav>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container hero__container">
-                <div class="hero__content">
-                    <div class="hero__heading">
-                        <h1 class="hero__title">
-                            Tus finanzas <span class="text-primary">bajo control</span> en un solo lugar
-                        </h1>
-                        <p class="hero__description">
-                            Visualiza tus presupuestos, monitorea tus gastos en tiempo real y toma decisiones inteligentes con datos claros, no con suposiciones.
-                        </p>
-                    </div>
-                    <a href="#descargar" class="btn btn--primary">Empezar ahora</a>
+
+        <!-- ===================== HERO ===================== -->
+        <!--
+            Mobile/tablet: stacked — text centred, phone below in normal flow, mascot hidden.
+            Desktop (lg 1024px+): fixed 581px height, phone + mascot absolutely positioned
+            matching Figma exactly.
+        -->
+        <section class="relative bg-[#F8F7F5] overflow-hidden lg:h-[581px]">
+            <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0 pt-12 pb-0 lg:pt-24 relative">
+
+                <!-- Text content -->
+                <div class="relative z-10 text-center lg:text-left lg:max-w-[50%]">
+                    <h1 class="font-extrabold text-black
+                               text-[36px] leading-[42px] tracking-[-0.025em]
+                               md:text-[48px] md:leading-[54px]
+                               lg:text-[72px] lg:leading-[72px] lg:tracking-[-1.8px] lg:w-[794px] lg:max-w-none">
+                        Tus finanzas <span class="text-primary">bajo control</span> en un solo lugar
+                    </h1>
+                    <p class="mt-4 text-[#747474]
+                               text-base leading-[26px]
+                               lg:text-[20px] lg:leading-[28px] lg:max-w-[540px]">
+                        Visualiza tus presupuestos, monitorea tus gastos en tiempo real y toma decisiones inteligentes con datos claros, no con suposiciones.
+                    </p>
+                    <a href="#descargar"
+                       class="mt-8 inline-flex items-center justify-center font-manrope font-bold text-lg text-white
+                              bg-primary hover:bg-primary-dark hover:-translate-y-px transition-all duration-150
+                              rounded-[10px] h-14 px-8">
+                        Empezar ahora
+                    </a>
                 </div>
-                <div class="hero__visual">
-                    <img src="assets/hero-graphic.svg" alt="" class="hero__graphic" aria-hidden="true">
-                    <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto" class="hero__phone">
+
+                <!-- Phone mockup — mobile only, in normal flow -->
+                <div class="lg:hidden mt-8 flex justify-center">
+                    <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto" class="w-64 sm:w-72 h-auto">
                 </div>
+
+                <!-- Decorative blur graphic — desktop only, absolute inside container -->
+                <img src="assets/hero-graphic.svg" alt="" aria-hidden="true"
+                     class="hidden lg:block absolute pointer-events-none z-0"
+                     style="width:683px; left:calc(50% + 80px); top:150px;">
+
+                <!-- Phone mockup — desktop only, absolute inside container -->
+                <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto"
+                     class="hidden lg:block absolute z-20 left-[68.5%] top-[63px] w-[clamp(300px,23.6vw,453px)]">
             </div>
-            <!-- Mascot positioned relative to section (full width) for proper viewport clipping -->
-            <img src="assets/hero-illustration.svg" alt="" class="hero__mascot" aria-hidden="true">
+
+            <!-- Mascot — desktop only, positioned relative to full section width -->
+            <img src="assets/hero-illustration.svg" alt="" aria-hidden="true"
+                 class="hidden lg:block absolute pointer-events-none z-10 right-[57px] top-[275px] w-[clamp(200px,15.7vw,302px)]">
         </section>
 
-        <!-- Somos Finanzen Section -->
-        <section id="quienes-somos" class="about">
-            <div class="container about__container">
-                <div class="about__header">
-                    <h2 class="section-title">Somos Finanzen</h2>
-                    <p class="section-subtitle">
+
+        <!-- ===================== SOMOS FINANZEN ===================== -->
+        <section id="quienes-somos" class="bg-white py-20 lg:py-[120px]">
+            <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0">
+
+                <div class="flex flex-col items-center text-center gap-6 mb-14 max-w-[954px] mx-auto">
+                    <h2 class="font-extrabold text-black tracking-[-0.02em]
+                               text-[32px] leading-[1.15]
+                               lg:text-[52px] lg:leading-[48px]">
+                        Somos Finanzen
+                    </h2>
+                    <p class="text-[#747474] text-lg leading-[28px]">
                         Una aplicación diseñada para ayudarte a gestionar tus finanzas personales de manera simple y efectiva. Creemos que todos merecen tener control sobre su dinero.
                     </p>
-                    <a href="#descargar" class="btn btn--primary about__cta">Toma el control hoy</a>
+                    <a href="#descargar"
+                       class="inline-flex items-center justify-center font-manrope font-bold text-lg text-white
+                              bg-primary hover:bg-primary-dark hover:-translate-y-px transition-all duration-150
+                              rounded-[10px] h-14 px-8">
+                        Toma el control hoy
+                    </a>
                 </div>
-                <div class="features">
-                    <div class="feature-card">
-                        <div class="feature-card__icon">
-                            <img src="assets/icon-gestion.svg" alt="" width="48" height="48">
-                        </div>
-                        <h3 class="feature-card__title">Gestión inteligente multimoneda</h3>
-                        <p class="feature-card__description">Organiza tus ingresos y gastos de forma automática con categorías personalizadas.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-[84px] lg:justify-items-center">
+                    <div class="bg-white rounded-2xl p-8 shadow-[0px_1px_10px_rgba(0,0,0,0.2)] hover:-translate-y-1 hover:shadow-[0px_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200 lg:w-[342px]">
+                        <div class="mb-4"><img src="assets/icon-gestion.svg" alt="" width="48" height="48"></div>
+                        <h3 class="font-semibold text-black text-xl leading-[28px] mb-4">Gestión inteligente multimoneda</h3>
+                        <p class="text-[#747474] text-lg leading-[28px]">Organiza tus ingresos y gastos de forma automática con categorías personalizadas.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-card__icon">
-                            <img src="assets/icon-disciplina.svg" alt="" width="48" height="48">
-                        </div>
-                        <h3 class="feature-card__title">Disciplina con flexibilidad</h3>
-                        <p class="feature-card__description">Visualiza tus finanzas con gráficos claros y reportes detallados que puedes exportar.</p>
+                    <div class="bg-white rounded-2xl p-8 shadow-[0px_1px_10px_rgba(0,0,0,0.2)] hover:-translate-y-1 hover:shadow-[0px_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200 lg:w-[342px]">
+                        <div class="mb-4"><img src="assets/icon-disciplina.svg" alt="" width="48" height="48"></div>
+                        <h3 class="font-semibold text-black text-xl leading-[28px] mb-4">Disciplina con flexibilidad</h3>
+                        <p class="text-[#747474] text-lg leading-[28px]">Visualiza tus finanzas con gráficos claros y reportes detallados que puedes exportar.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-card__icon">
-                            <img src="assets/icon-seguridad.svg" alt="" width="48" height="48">
-                        </div>
-                        <h3 class="feature-card__title">Seguridad y respaldo garantizado</h3>
-                        <p class="feature-card__description">Tus datos financieros están protegidos con encriptación de nivel bancario.</p>
+                    <!-- 3rd card: centred on 2-col tablet layout -->
+                    <div class="bg-white rounded-2xl p-8 shadow-[0px_1px_10px_rgba(0,0,0,0.2)] hover:-translate-y-1 hover:shadow-[0px_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200 md:col-span-2 md:max-w-[342px] md:mx-auto lg:col-span-1 lg:w-[342px] lg:max-w-none lg:mx-0">
+                        <div class="mb-4"><img src="assets/icon-seguridad.svg" alt="" width="48" height="48"></div>
+                        <h3 class="font-semibold text-black text-xl leading-[28px] mb-4">Seguridad y respaldo garantizado</h3>
+                        <p class="text-[#747474] text-lg leading-[28px]">Tus datos financieros están protegidos con encriptación de nivel bancario.</p>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Configura tu presupuesto Section -->
-        <section class="budget-section">
-            <div class="container budget-section__container">
-                <div class="budget-section__content">
-                    <h2 class="budget-section__title">Configura tu presupuesto</h2>
-                    <p class="budget-section__description">
+
+        <!-- ===================== CONFIGURA TU PRESUPUESTO ===================== -->
+        <!--
+            Mobile/tablet: visual box on top (phone centred inside), text below.
+            Desktop (lg+): two-column grid, text left / visual right.
+        -->
+        <section class="bg-white py-20 lg:py-[120px] overflow-hidden">
+            <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0
+                        flex flex-col gap-10
+                        lg:grid lg:grid-cols-[1fr_632px] lg:items-center">
+
+                <!-- Text — below visual on mobile, left on desktop -->
+                <div class="order-2 lg:order-1 text-center lg:text-left">
+                    <h2 class="font-extrabold text-black
+                               text-[28px] leading-[1.3]
+                               lg:text-[36px] lg:leading-[48px] mb-6">
+                        Configura tu presupuesto
+                    </h2>
+                    <p class="text-[#747474] text-lg leading-[28px] mb-6">
                         Define tus límites de gasto por categoría y recibe alertas cuando estés cerca de alcanzarlos. Mantén el control total de tu dinero con herramientas visuales intuitivas.
                     </p>
-                    <a href="#descargar" class="btn btn--primary">Asegura tus metas</a>
+                    <a href="#descargar"
+                       class="inline-flex items-center justify-center font-manrope font-bold text-lg text-white
+                              bg-primary hover:bg-primary-dark hover:-translate-y-px transition-all duration-150
+                              rounded-[10px] h-14 px-8">
+                        Asegura tus metas
+                    </a>
                 </div>
-                <div class="budget-section__visual">
-                    <!-- Decorative curved background -->
-                    <img src="assets/budget-bg-curve.svg" alt="" class="budget-section__curve" aria-hidden="true">
-                    <img src="assets/budget-mockup.png" alt="Configuración de presupuesto en Finanzen" class="budget-section__image">
-                    <!-- Floating highlight card overlay -->
-                    <img src="assets/highlight-budget.png" alt="" class="budget-section__highlight" aria-hidden="true">
+
+                <!-- Visual box -->
+                <div class="order-1 lg:order-2 relative bg-primary rounded-2xl overflow-hidden w-full
+                            flex items-center justify-center
+                            py-10 lg:py-0 lg:h-[600px]">
+
+                    <!-- Decorative curve — desktop only -->
+                    <img src="assets/budget-bg-curve.svg" alt="" aria-hidden="true"
+                         class="hidden lg:block absolute top-[40%] left-0 w-full h-[60%] z-0 pointer-events-none object-cover">
+
+                    <!-- Phone mockup:
+                         Mobile: centred, natural size
+                         Desktop: absolutely positioned, overflows box as in Figma -->
+                    <img src="assets/budget-mockup.png" alt="Configuración de presupuesto en Finanzen"
+                         class="relative z-10 max-h-[260px] w-auto
+                                lg:max-h-none lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:-top-[17px] lg:w-[170%] lg:max-w-none">
+
+                    <!-- Floating highlight card — desktop only -->
+                    <img src="assets/highlight-budget.png" alt="" aria-hidden="true"
+                         class="hidden lg:block absolute z-20 drop-shadow-[0px_1px_12px_rgba(0,0,0,0.15)]"
+                         style="left:13.6%; top:36.2%; width:72.5%;">
                 </div>
+
             </div>
         </section>
 
-        <!-- Registra tus gastos Section -->
-        <section class="expenses-section">
-            <div class="container expenses-section__container">
-                <div class="expenses-section__visual">
-                    <!-- Decorative curved background -->
-                    <img src="assets/expenses-bg-curve.svg" alt="" class="expenses-section__curve" aria-hidden="true">
-                    <img src="assets/hero-phone-mockup.png" alt="Registro de gastos en Finanzen" class="expenses-section__image">
-                    <!-- Floating highlight card overlay -->
-                    <img src="assets/highlight-expenses.png" alt="" class="expenses-section__highlight" aria-hidden="true">
+
+        <!-- ===================== REGISTRA TUS GASTOS ===================== -->
+        <!--
+            Mobile/tablet: visual box on top, text below.
+            Desktop (lg+): visual left / text right.
+        -->
+        <section class="bg-white py-20 lg:py-[120px] overflow-hidden">
+            <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0
+                        flex flex-col gap-10
+                        lg:grid lg:grid-cols-[632px_1fr] lg:items-center">
+
+                <!-- Visual box — always first (top on mobile, left on desktop) -->
+                <div class="relative bg-primary-darker rounded-2xl overflow-hidden w-full
+                            flex items-center justify-center
+                            py-10 lg:py-0 lg:h-[600px]">
+
+                    <!-- Decorative curve — desktop only -->
+                    <img src="assets/expenses-bg-curve.svg" alt="" aria-hidden="true"
+                         class="hidden lg:block absolute z-0 pointer-events-none"
+                         style="top:44.33%; left:-14.56%; width:123.6%; transform:rotate(27.13deg) skewX(2.19deg);">
+
+                    <!-- Phone mockup -->
+                    <img src="assets/hero-phone-mockup.png" alt="Registro de gastos en Finanzen"
+                         class="relative z-10 max-h-[260px] w-auto
+                                lg:max-h-none lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-auto lg:-top-[17px] lg:w-[170%] lg:max-w-none">
+
+                    <!-- Floating highlight card — desktop only -->
+                    <img src="assets/highlight-expenses.png" alt="" aria-hidden="true"
+                         class="hidden lg:block absolute z-20 drop-shadow-[0px_1px_12px_rgba(0,0,0,0.15)]"
+                         style="left:13.6%; top:50%; width:72.5%;">
                 </div>
-                <div class="expenses-section__content">
-                    <h2 class="expenses-section__title">Registra tus gastos</h2>
-                    <p class="expenses-section__description">
+
+                <!-- Text -->
+                <div class="text-center lg:text-left">
+                    <h2 class="font-extrabold text-black
+                               text-[28px] leading-[1.3]
+                               lg:text-[36px] lg:leading-[48px] mb-6">
+                        Registra tus gastos
+                    </h2>
+                    <p class="text-[#747474] text-lg leading-[28px] mb-6">
                         Agrega tus gastos en segundos con nuestra interfaz simple. Categoriza automáticamente y mantén un historial completo de todas tus transacciones.
                     </p>
-                    <a href="#descargar" class="btn btn--primary">Organiza tus finanzas</a>
+                    <a href="#descargar"
+                       class="inline-flex items-center justify-center font-manrope font-bold text-lg text-white
+                              bg-primary hover:bg-primary-dark hover:-translate-y-px transition-all duration-150
+                              rounded-[10px] h-14 px-8">
+                        Organiza tus finanzas
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ===================== FAQ ===================== -->
+        <section id="preguntas" class="bg-[#F8F7F5] py-20 lg:py-24">
+            <div class="max-w-[954px] mx-auto px-5 md:px-8">
+                <h2 class="font-extrabold text-black tracking-[-0.02em] text-center mb-12
+                           text-[32px] leading-[1.15]
+                           lg:text-[52px] lg:leading-[48px]">
+                    Preguntas frecuentes
+                </h2>
+                <div class="flex flex-col gap-4">
+
+                    <details class="bg-white border border-[#E8DFCE] rounded-2xl overflow-hidden">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer text-lg font-bold text-[#1C170D]">
+                            <span class="flex-1 pr-4">¿Es Finanzen gratis?</span>
+                            <svg class="faq-chevron shrink-0 text-primary" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </summary>
+                        <p class="px-6 pb-6 text-base text-[#5E5137] leading-[1.7]">Sí, Finanzen ofrece un plan gratuito con todas las funciones esenciales para gestionar tus finanzas personales. También contamos con planes premium con características avanzadas.</p>
+                    </details>
+
+                    <details class="bg-white border border-[#E8DFCE] rounded-2xl overflow-hidden">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer text-lg font-bold text-[#1C170D]">
+                            <span class="flex-1 pr-4">¿Puedo gestionar mis gastos en diferentes monedas?</span>
+                            <svg class="faq-chevron shrink-0 text-primary" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </summary>
+                        <p class="px-6 pb-6 text-base text-[#5E5137] leading-[1.7]">Sí, Finanzen soporta múltiples monedas incluyendo dólares y bolívares. Puedes configurar tu moneda principal y agregar gastos en cualquier moneda.</p>
+                    </details>
+
+                    <details class="bg-white border border-[#E8DFCE] rounded-2xl overflow-hidden">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer text-lg font-bold text-[#1C170D]">
+                            <span class="flex-1 pr-4">¿Cómo se actualiza la tasa de cambio entre monedas?</span>
+                            <svg class="faq-chevron shrink-0 text-primary" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </summary>
+                        <p class="px-6 pb-6 text-base text-[#5E5137] leading-[1.7]">Las tasas de cambio se actualizan automáticamente cada día usando fuentes confiables. También puedes configurar una tasa personalizada si lo prefieres.</p>
+                    </details>
+
+                    <details class="bg-white border border-[#E8DFCE] rounded-2xl overflow-hidden">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer text-lg font-bold text-[#1C170D]">
+                            <span class="flex-1 pr-4">¿Mis datos financieros están seguros?</span>
+                            <svg class="faq-chevron shrink-0 text-primary" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </summary>
+                        <p class="px-6 pb-6 text-base text-[#5E5137] leading-[1.7]">Absolutamente. Utilizamos encriptación de nivel bancario (AES-256) para proteger toda tu información. Tus datos nunca se comparten con terceros.</p>
+                    </details>
+
+                    <details class="bg-white border border-[#E8DFCE] rounded-2xl overflow-hidden">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer text-lg font-bold text-[#1C170D]">
+                            <span class="flex-1 pr-4">¿La aplicación funciona sin conexión a internet?</span>
+                            <svg class="faq-chevron shrink-0 text-primary" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </summary>
+                        <p class="px-6 pb-6 text-base text-[#5E5137] leading-[1.7]">Sí, puedes registrar gastos sin conexión. Los datos se sincronizarán automáticamente cuando vuelvas a tener internet.</p>
+                    </details>
+
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="preguntas" class="faq">
-            <div class="container faq__container">
-                <h2 class="section-title">Preguntas frecuentes</h2>
-                <div class="faq__list">
-                    <details class="faq__item">
-                        <summary class="faq__question">
-                            <span>¿Es Finanzen gratis?</span>
-                            <svg class="faq__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </summary>
-                        <p class="faq__answer">Sí, Finanzen ofrece un plan gratuito con todas las funciones esenciales para gestionar tus finanzas personales. También contamos con planes premium con características avanzadas.</p>
-                    </details>
-                    <details class="faq__item">
-                        <summary class="faq__question">
-                            <span>¿Puedo gestionar mis gastos en diferentes monedas?</span>
-                            <svg class="faq__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </summary>
-                        <p class="faq__answer">Sí, Finanzen soporta múltiples monedas incluyendo dólares y bolívares. Puedes configurar tu moneda principal y agregar gastos en cualquier moneda.</p>
-                    </details>
-                    <details class="faq__item">
-                        <summary class="faq__question">
-                            <span>¿Cómo se actualiza la tasa de cambio entre monedas?</span>
-                            <svg class="faq__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </summary>
-                        <p class="faq__answer">Las tasas de cambio se actualizan automáticamente cada día usando fuentes confiables. También puedes configurar una tasa personalizada si lo prefieres.</p>
-                    </details>
-                    <details class="faq__item">
-                        <summary class="faq__question">
-                            <span>¿Mis datos financieros están seguros?</span>
-                            <svg class="faq__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </summary>
-                        <p class="faq__answer">Absolutamente. Utilizamos encriptación de nivel bancario (AES-256) para proteger toda tu información. Tus datos nunca se comparten con terceros.</p>
-                    </details>
-                    <details class="faq__item">
-                        <summary class="faq__question">
-                            <span>¿La aplicación funciona sin conexión a internet?</span>
-                            <svg class="faq__chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </summary>
-                        <p class="faq__answer">Sí, puedes registrar gastos sin conexión. Los datos se sincronizarán automáticamente cuando vuelvas a tener internet.</p>
-                    </details>
+
+        <!-- ===================== DOWNLOAD CTA ===================== -->
+        <section id="descargar" class="bg-white py-20 lg:py-24">
+            <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0">
+                <div class="relative bg-primary rounded-[48px] overflow-hidden max-w-[1200px] mx-auto min-h-[200px] lg:min-h-[400px]">
+
+                    <!-- Text + badges -->
+                    <div class="relative z-10 p-10 lg:py-10 lg:pl-20 lg:pr-0 lg:max-w-[55%]">
+                        <h2 class="font-extrabold text-white leading-[1.15] mb-8
+                                   text-[32px]
+                                   lg:text-[52px] lg:whitespace-nowrap">
+                            Descarga nuestra app
+                        </h2>
+                        <a href="#" aria-label="Descargar en Google Play y App Store">
+                            <img src="assets/app-store-badges.svg" alt="Disponible en Google Play y App Store" class="h-[50px] w-auto">
+                        </a>
+                    </div>
+
+                    <!-- Illustration — desktop only -->
+                    <div class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[50%] h-[140%] z-0">
+                        <img src="assets/cta-illustration.svg" alt="" aria-hidden="true"
+                             class="absolute w-[85%] top-1/2 right-[-12%] -translate-y-[45%]">
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Download CTA Section -->
-        <section id="descargar" class="cta">
-            <div class="container">
-                <div class="cta__card">
-                    <div class="cta__content">
-                        <h2 class="cta__title">Descarga nuestra app</h2>
-                        <div class="cta__badges">
-                            <a href="#" class="cta__badge" aria-label="Descargar en Google Play">
-                                <img src="assets/app-store-badges.svg" alt="Disponible en Google Play y App Store" height="50">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="cta__visual">
-                        <img src="assets/cta-illustration.svg" alt="" class="cta__illustration" aria-hidden="true">
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer__container">
-            <div class="footer__top">
-                <div class="footer__logo">
-                    <img src="assets/logo-footer.svg" alt="Finanzen">
-                </div>
-                <div class="footer__social">
-                    <a href="#" class="footer__social-link" aria-label="Instagram">
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-[#F8F7F5] pt-16 pb-8">
+        <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0 flex flex-col gap-16">
+
+            <div class="flex flex-col items-center gap-6">
+                <img src="assets/logo-footer.svg" alt="Finanzen" class="w-[216px] h-auto">
+                <div class="flex gap-4">
+                    <a href="#" class="flex items-center justify-center w-10 h-10 bg-primary hover:bg-primary-dark text-white rounded-full transition-colors duration-150" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.167 1.667H5.833A4.167 4.167 0 001.667 5.833v8.334a4.167 4.167 0 004.166 4.166h8.334a4.167 4.167 0 004.166-4.166V5.833a4.167 4.167 0 00-4.166-4.166z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M13.333 9.475a3.333 3.333 0 11-6.593 1.05 3.333 3.333 0 016.593-1.05zM14.583 5.417h.008" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </a>
-                    <a href="#" class="footer__social-link" aria-label="TikTok">
+                    <a href="#" class="flex items-center justify-center w-10 h-10 bg-primary hover:bg-primary-dark text-white rounded-full transition-colors duration-150" aria-label="TikTok">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.167 7.5a4.167 4.167 0 01-4.167-4.167V2.5h-2.5v10.833a2.5 2.5 0 11-2.5-2.5V8.333a5 5 0 105 5V8.75a6.667 6.667 0 004.167 1.458V7.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </a>
                 </div>
             </div>
-            <div class="footer__bottom">
-                <p class="footer__copyright">&copy; 2026 Finanzen. Todos los derechos reservados.</p>
-                <div class="footer__links">
-                    <a href="#" class="footer__link">Términos y condiciones</a>
-                    <a href="#" class="footer__link">Política de privacidad</a>
+
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 pt-8 border-t border-[#747474]">
+                <p class="text-sm text-black font-manrope">&copy; 2026 Finanzen. Todos los derechos reservados.</p>
+                <div class="flex gap-10">
+                    <a href="#" class="text-sm text-black font-manrope hover:text-primary transition-colors">Términos y condiciones</a>
+                    <a href="#" class="text-sm text-black font-manrope hover:text-primary transition-colors">Política de privacidad</a>
                 </div>
             </div>
+
         </div>
     </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', function () {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', String(!isOpen));
+        });
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+
 </body>
 </html>

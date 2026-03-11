@@ -31,3 +31,16 @@ details[open] .faq-chevron {
     transform: rotate(180deg);
 }
 
+/* Hero — phone & mascot responsive positioning (desktop only)
+   Mascot right:-50% keeps it off-screen at narrow desktops; the section's
+   overflow-hidden clips it, and it gradually reveals at wider viewports.
+   Phone shifts from inside-column (lg) to slightly beyond (xl). */
+@media (min-width: 1024px) {
+    .hero-phone  { top: 12%; right: 17%; width: 80%; }
+    .hero-mascot { top: 47%; right: -50%; }
+}
+@media (min-width: 1280px) {
+    .hero-phone  { right: 20%; }
+    .hero-mascot { top: 52%; right: -12%; }
+}
+

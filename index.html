@@ -197,19 +197,16 @@
 
                 <!-- Visual box -->
                 <div class="order-1 lg:order-2 relative bg-primary rounded-2xl overflow-hidden w-full
-                            flex items-center justify-center
-                            py-10 lg:py-0 lg:h-[600px]">
+                            h-[340px] sm:h-[420px] md:h-[480px] lg:h-[600px]">
 
                     <!-- Decorative curve — desktop only -->
                     <img src="assets/budget-bg-curve.svg" alt="" aria-hidden="true"
                          class="hidden lg:block absolute top-[40%] left-0 w-full h-[60%] z-0 pointer-events-none object-cover">
 
-                    <!-- Phone mockup:
-                         Mobile: centred, natural size
-                         Desktop: absolutely positioned, overflows box as in Figma -->
+                    <!-- Phone mockup — overflows box at all sizes (clipped by overflow-hidden) -->
                     <img src="assets/budget-mockup.png" alt="Configuración de presupuesto en Finanzen"
-                         class="relative z-10 max-h-[260px] w-auto
-                                lg:max-h-none lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:-top-[17px] lg:w-[170%] lg:max-w-none">
+                         class="absolute left-1/2 -translate-x-1/2 top-0 z-10 h-auto max-w-none
+                                w-[110%] sm:w-[120%] md:w-[130%] lg:w-[170%] lg:-top-[17px]">
 
                     <!-- Floating highlight card — desktop only -->
                     <img src="assets/highlight-budget.png" alt="" aria-hidden="true"
@@ -233,18 +230,17 @@
 
                 <!-- Visual box — always first (top on mobile, left on desktop) -->
                 <div class="relative bg-primary-darker rounded-2xl overflow-hidden w-full
-                            flex items-center justify-center
-                            py-10 lg:py-0 lg:h-[600px]">
+                            h-[340px] sm:h-[420px] md:h-[480px] lg:h-[600px]">
 
                     <!-- Decorative curve — desktop only -->
                     <img src="assets/expenses-bg-curve.svg" alt="" aria-hidden="true"
                          class="hidden lg:block absolute z-0 pointer-events-none"
                          style="top:44.33%; left:-14.56%; width:123.6%; transform:rotate(27.13deg) skewX(2.19deg);">
 
-                    <!-- Phone mockup -->
+                    <!-- Phone mockup — overflows box at all sizes (clipped by overflow-hidden) -->
                     <img src="assets/hero-phone-mockup.png" alt="Registro de gastos en Finanzen"
-                         class="relative z-10 max-h-[260px] w-auto
-                                lg:max-h-none lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-auto lg:-top-[17px] lg:w-[170%] lg:max-w-none">
+                         class="absolute left-1/2 -translate-x-1/2 top-0 z-10 h-auto max-w-none
+                                w-[110%] sm:w-[120%] md:w-[130%] lg:w-[170%] lg:-top-[17px]">
 
                     <!-- Floating highlight card — desktop only -->
                     <img src="assets/highlight-expenses.png" alt="" aria-hidden="true"

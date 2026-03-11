@@ -121,20 +121,21 @@
                     <img src="assets/hero-graphic.svg" alt="" aria-hidden="true"
                          class="absolute z-[1] top-0 -left-[15%] w-[130%] pointer-events-none">
 
-                    <!-- Phone mockup — anchored from right, front layer (z-20) -->
-                    <!-- right-[36%] puts the phone's right edge into the mascot's left side -->
+                    <!-- Phone mockup — width = 43% of column so it scales fluidly (z-20) -->
+                    <!-- right-[33%] keeps the phone's right edge 12% past the mascot's left -->
                     <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto"
                          class="absolute z-20
-                                top-[40px] xl:top-[55px]
-                                right-[36%]
-                                h-[500px] xl:h-[540px] w-auto">
+                                top-[55px]
+                                right-[33%]
+                                w-[43%] h-auto">
 
-                    <!-- Mascot — flush right, partially behind phone (z-10) -->
+                    <!-- Mascot — width = 45% of column, scales with phone (z-10) -->
+                    <!-- Overlap = 12% of column = ~27% of mascot covered by phone edge -->
                     <img src="assets/hero-illustration.svg" alt="" aria-hidden="true"
                          class="absolute z-10 pointer-events-none
                                 right-0
                                 bottom-0
-                                h-[240px] xl:h-[300px] w-auto">
+                                w-[45%] h-auto">
                 </div>
 
             </div>

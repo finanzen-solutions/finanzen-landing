@@ -26,6 +26,7 @@
             }
         }
     </script>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-[#F8F7F5] text-[#1C170D] font-sans overflow-x-hidden antialiased pt-[73px]">
@@ -35,7 +36,7 @@
         <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0 flex items-center justify-between py-4">
 
             <a href="/" class="shrink-0">
-                <img src="assets/logo-header.svg" alt="Finanzen" class="h-[29px] w-auto">
+                <img src="assets/logo-header.svg" alt="Finanzen" class="h-[29px] w-[165px]">
             </a>
 
             <nav class="hidden md:flex gap-10">
@@ -74,61 +75,68 @@
 
         <!-- ===================== HERO ===================== -->
         <!--
-            Mobile/tablet: stacked — text centred, phone below in normal flow, mascot hidden.
-            Desktop (lg 1024px+): fixed 581px height, phone + mascot absolutely positioned
-            matching Figma exactly.
+            Mobile/tablet: stacked — text centred, phone below in normal flow.
+            Desktop (lg+): two-column flex — text left (55%), visuals right (45%).
+            Phone and mascot positioned within the right column (scale with viewport).
+            Mascot z-10 stays behind phone z-20 (intentional design overlap).
         -->
-        <section class="relative bg-[#F8F7F5] overflow-hidden lg:h-[581px]">
-            <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0 pt-12 pb-0 lg:pt-24 relative">
+        <section class="relative bg-[#F8F7F5] overflow-hidden">
+            <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0
+                        flex flex-col lg:flex-row lg:min-h-[581px]">
 
-                <!-- Text content -->
-                <div class="relative z-10 text-center lg:text-left lg:max-w-[50%]">
-                    <h1 class="font-extrabold text-black
-                               text-[36px] leading-[42px] tracking-[-0.025em]
+                <!-- ── Left: text (vertically centred at desktop) ── -->
+                <div class="lg:w-[55%] flex flex-col justify-center
+                            py-12 lg:py-0 lg:pr-10
+                            text-center lg:text-left relative z-10">
+                    <h1 class="font-extrabold text-black tracking-[-0.025em]
+                               text-[36px] leading-[42px]
                                md:text-[48px] md:leading-[54px]
-                               lg:text-[72px] lg:leading-[72px] lg:tracking-[-1.8px] lg:w-[794px] lg:max-w-none">
+                               lg:text-[clamp(42px,5vw,72px)] lg:leading-[clamp(48px,5.5vw,78px)] lg:tracking-[-1.5px]">
                         Tus finanzas <span class="text-primary">bajo control</span> en un solo lugar
                     </h1>
                     <p class="mt-4 text-[#747474]
                                text-base leading-[26px]
-                               lg:text-[20px] lg:leading-[28px] lg:max-w-[540px]">
+                               lg:text-[18px] lg:leading-[28px]
+                               xl:text-[20px]">
                         Visualiza tus presupuestos, monitorea tus gastos en tiempo real y toma decisiones inteligentes con datos claros, no con suposiciones.
                     </p>
                     <a href="#descargar"
                        class="mt-8 inline-flex items-center justify-center font-manrope font-bold text-lg text-white
                               bg-primary hover:bg-primary-dark hover:-translate-y-px transition-all duration-150
-                              rounded-[10px] h-14 px-8">
+                              rounded-[10px] h-14 px-8 self-center lg:self-start">
                         Empezar ahora
                     </a>
+
+                    <!-- Phone mockup — mobile/tablet only -->
+                    <div class="lg:hidden mt-8 flex justify-center">
+                        <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto" class="w-64 sm:w-72 h-auto">
+                    </div>
                 </div>
 
-                <!-- Phone mockup — mobile only, in normal flow -->
-                <div class="lg:hidden mt-8 flex justify-center">
-                    <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto" class="w-64 sm:w-72 h-auto">
+                <!-- ── Right: visuals (desktop only) ── -->
+                <!-- No overflow-hidden here — graphic extends left, section handles clipping. -->
+                <div class="hidden lg:block lg:w-[45%] relative self-stretch">
+
+                    <!-- Decorative blur graphic — behind everything, extends slightly left -->
+                    <img src="assets/hero-graphic.svg" alt="" aria-hidden="true"
+                         class="absolute z-[1] top-0 -left-[15%] w-[130%] pointer-events-none">
+
+                    <!-- Phone mockup — centered in column, front layer (z-20) -->
+                    <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto"
+                         class="absolute z-20
+                                top-[40px] xl:top-[55px]
+                                left-1/2 -translate-x-1/2
+                                h-[500px] xl:h-[540px] w-auto">
+
+                    <!-- Mascot — right side, partially behind phone (z-10) -->
+                    <img src="assets/hero-illustration.svg" alt="" aria-hidden="true"
+                         class="absolute z-10 pointer-events-none
+                                right-0
+                                bottom-[20px] xl:bottom-[30px]
+                                h-[240px] xl:h-[300px] w-auto">
                 </div>
 
-                <!-- Decorative blur graphic — desktop only -->
-                <!-- z-[1] keeps it above section bg but below phone/mascot. -->
-                <!-- Positions scale per breakpoint to stay behind the phone. -->
-                <img src="assets/hero-graphic.svg" alt="" aria-hidden="true"
-                     class="hidden lg:block absolute pointer-events-none z-[1]
-                            lg:left-[48%] lg:top-[130px] lg:w-[550px]
-                            xl:left-[56%] xl:top-[140px] xl:w-[683px]">
-
-                <!-- Phone mockup — desktop only -->
-                <!-- lg: 1024-1279px values; xl: 1280px+ values (matches original CSS breakpoints). -->
-                <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto"
-                     class="hidden lg:block absolute z-20
-                            lg:left-[62%] lg:top-[50px] lg:w-[clamp(280px,30vw,360px)]
-                            xl:left-[65%] xl:top-[55px] xl:w-[clamp(340px,28vw,400px)]">
             </div>
-
-            <!-- Mascot — desktop only, positioned relative to full section width. -->
-            <!-- lg/xl values keep visible overlap at ~30-50% instead of 80%+. -->
-            <img src="assets/hero-illustration.svg" alt="" aria-hidden="true"
-                 class="hidden lg:block absolute pointer-events-none z-10
-                        lg:right-[30px] lg:top-[200px] lg:w-[20vw]
-                        xl:right-[40px] xl:top-[230px] xl:w-[clamp(200px,18vw,302px)]">
         </section>
 
 
@@ -379,7 +387,7 @@
         <div class="max-w-[1280px] mx-auto px-5 md:px-8 xl:px-0 flex flex-col gap-16">
 
             <div class="flex flex-col items-center gap-6">
-                <img src="assets/logo-footer.svg" alt="Finanzen" class="w-[216px] h-auto">
+                <img src="assets/logo-footer.svg" alt="Finanzen" class="w-[216px] h-[38px]">
                 <div class="flex gap-4">
                     <a href="#" class="flex items-center justify-center w-10 h-10 bg-primary hover:bg-primary-dark text-white rounded-full transition-colors duration-150" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

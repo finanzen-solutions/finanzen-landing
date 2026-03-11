@@ -107,19 +107,28 @@
                     <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto" class="w-64 sm:w-72 h-auto">
                 </div>
 
-                <!-- Decorative blur graphic — desktop only, absolute inside container -->
+                <!-- Decorative blur graphic — desktop only -->
+                <!-- z-[1] keeps it above section bg but below phone/mascot. -->
+                <!-- Positions scale per breakpoint to stay behind the phone. -->
                 <img src="assets/hero-graphic.svg" alt="" aria-hidden="true"
-                     class="hidden lg:block absolute pointer-events-none z-0"
-                     style="width:683px; left:calc(50% + 80px); top:150px;">
+                     class="hidden lg:block absolute pointer-events-none z-[1]
+                            lg:left-[48%] lg:top-[130px] lg:w-[550px]
+                            xl:left-[56%] xl:top-[140px] xl:w-[683px]">
 
-                <!-- Phone mockup — desktop only, absolute inside container -->
+                <!-- Phone mockup — desktop only -->
+                <!-- lg: 1024-1279px values; xl: 1280px+ values (matches original CSS breakpoints). -->
                 <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto"
-                     class="hidden lg:block absolute z-20 left-[68.5%] top-[63px] w-[clamp(300px,23.6vw,453px)]">
+                     class="hidden lg:block absolute z-20
+                            lg:left-[62%] lg:top-[50px] lg:w-[clamp(280px,30vw,360px)]
+                            xl:left-[65%] xl:top-[55px] xl:w-[clamp(340px,28vw,400px)]">
             </div>
 
-            <!-- Mascot — desktop only, positioned relative to full section width -->
+            <!-- Mascot — desktop only, positioned relative to full section width. -->
+            <!-- lg/xl values keep visible overlap at ~30-50% instead of 80%+. -->
             <img src="assets/hero-illustration.svg" alt="" aria-hidden="true"
-                 class="hidden lg:block absolute pointer-events-none z-10 right-[57px] top-[275px] w-[clamp(200px,15.7vw,302px)]">
+                 class="hidden lg:block absolute pointer-events-none z-10
+                        lg:right-[30px] lg:top-[200px] lg:w-[20vw]
+                        xl:right-[40px] xl:top-[230px] xl:w-[clamp(200px,18vw,302px)]">
         </section>
 
 
@@ -210,8 +219,8 @@
 
                     <!-- Floating highlight card — desktop only -->
                     <img src="assets/highlight-budget.png" alt="" aria-hidden="true"
-                         class="hidden lg:block absolute z-20 drop-shadow-[0px_1px_12px_rgba(0,0,0,0.15)]"
-                         style="left:13.6%; top:36.2%; width:72.5%;">
+                         class="hidden lg:block absolute z-20"
+                         style="left:13.6%; top:36.2%; width:72.5%; filter:drop-shadow(0px 1px 12px rgba(0,0,0,0.15));">
                 </div>
 
             </div>
@@ -244,8 +253,8 @@
 
                     <!-- Floating highlight card — desktop only -->
                     <img src="assets/highlight-expenses.png" alt="" aria-hidden="true"
-                         class="hidden lg:block absolute z-20 drop-shadow-[0px_1px_12px_rgba(0,0,0,0.15)]"
-                         style="left:13.6%; top:50%; width:72.5%;">
+                         class="hidden lg:block absolute z-20"
+                         style="left:13.6%; top:50%; width:72.5%; filter:drop-shadow(0px 1px 12px rgba(0,0,0,0.15));">
                 </div>
 
                 <!-- Text -->

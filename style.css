@@ -40,7 +40,7 @@ details[open] .faq-chevron {
     .hero-mascot { top: 47%; right: -50%; }
 }
 @media (min-width: 1280px) {
-    .hero-phone  { right: 20%; }
-    .hero-mascot { top: 52%; right: -12%; }
+    .hero-phone  { right: -10%; }
+    .hero-mascot { top: 47%; right: -46%; }
 }
 

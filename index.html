@@ -121,21 +121,17 @@
                     <img src="assets/hero-graphic.svg" alt="" aria-hidden="true"
                          class="absolute z-[1] top-0 -left-[15%] w-[130%] pointer-events-none">
 
-                    <!-- Phone mockup — width = 43% of column so it scales fluidly (z-20) -->
-                    <!-- right-[33%] keeps the phone's right edge 12% past the mascot's left -->
+                    <!-- Phone mockup (z-20) -->
+                    <!-- All values are % of the right column → scale proportionally at every vp -->
                     <img src="assets/hero-composite.png" alt="App Finanzen mostrando presupuesto"
-                         class="absolute z-20
-                                top-[55px]
-                                right-[33%]
-                                w-[43%] h-auto">
+                         class="absolute z-20 h-auto"
+                         style="top:12%; right:-13%; width:80%;">
 
-                    <!-- Mascot — width = 45% of column, scales with phone (z-10) -->
-                    <!-- Overlap = 12% of column = ~27% of mascot covered by phone edge -->
+                    <!-- Mascot (z-10) — behind phone, hand slightly covered -->
+                    <!-- right:-50% extends past column edge; section overflow-hidden clips it -->
                     <img src="assets/hero-illustration.svg" alt="" aria-hidden="true"
-                         class="absolute z-10 pointer-events-none
-                                right-0
-                                bottom-0
-                                w-[45%] h-auto">
+                         class="absolute z-10 pointer-events-none w-[clamp(200px,18vw,302px)] h-auto"
+                         style="right:-50%; top:47%;">
                 </div>
 
             </div>
@@ -218,14 +214,15 @@
                 <div class="order-1 lg:order-2 relative bg-primary rounded-2xl overflow-hidden w-full
                             h-[340px] sm:h-[420px] md:h-[480px] lg:h-[600px]">
 
-                    <!-- Decorative curve — desktop only -->
+                    <!-- Decorative curve — all sizes -->
                     <img src="assets/budget-bg-curve.svg" alt="" aria-hidden="true"
-                         class="hidden lg:block absolute top-[40%] left-0 w-full h-[60%] z-0 pointer-events-none object-cover">
+                         class="absolute top-[40%] left-0 w-full h-[60%] z-0 pointer-events-none object-cover">
 
                     <!-- Phone mockup — overflows box at all sizes (clipped by overflow-hidden) -->
+                    <!-- budget-mockup.png is 2240×2000 (near-square) — needs larger % to overflow -->
                     <img src="assets/budget-mockup.png" alt="Configuración de presupuesto en Finanzen"
                          class="absolute left-1/2 -translate-x-1/2 top-0 z-10 h-auto max-w-none
-                                w-[110%] sm:w-[120%] md:w-[130%] lg:w-[170%] lg:-top-[17px]">
+                                w-[130%] sm:w-[145%] md:w-[155%] lg:w-[170%] lg:-top-[17px]">
 
                     <!-- Floating highlight card — desktop only -->
                     <img src="assets/highlight-budget.png" alt="" aria-hidden="true"
@@ -251,15 +248,16 @@
                 <div class="relative bg-primary-darker rounded-2xl overflow-hidden w-full
                             h-[340px] sm:h-[420px] md:h-[480px] lg:h-[600px]">
 
-                    <!-- Decorative curve — desktop only -->
+                    <!-- Decorative curve — all sizes -->
                     <img src="assets/expenses-bg-curve.svg" alt="" aria-hidden="true"
-                         class="hidden lg:block absolute z-0 pointer-events-none"
+                         class="absolute z-0 pointer-events-none"
                          style="top:44.33%; left:-14.56%; width:123.6%; transform:rotate(27.13deg) skewX(2.19deg);">
 
                     <!-- Phone mockup — overflows box at all sizes (clipped by overflow-hidden) -->
+                    <!-- hero-phone-mockup.png is 2240×2000 (near-square) — needs larger % to overflow -->
                     <img src="assets/hero-phone-mockup.png" alt="Registro de gastos en Finanzen"
                          class="absolute left-1/2 -translate-x-1/2 top-0 z-10 h-auto max-w-none
-                                w-[110%] sm:w-[120%] md:w-[130%] lg:w-[170%] lg:-top-[17px]">
+                                w-[130%] sm:w-[145%] md:w-[155%] lg:w-[170%] lg:-top-[17px]">
 
                     <!-- Floating highlight card — desktop only -->
                     <img src="assets/highlight-expenses.png" alt="" aria-hidden="true"

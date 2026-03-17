@@ -5,11 +5,16 @@
 
 
 .logo-lamppost {
-    height: 3.5em;
+    height: 2em;
     width: auto;
     mix-blend-mode: multiply;
-    position: relative;
-    top: 0.4em;
+}
+@media (min-width: 640px) {
+    .logo-lamppost {
+        height: 3.5em;
+        position: relative;
+        top: 0.4em;
+    }
 }
 
 html {

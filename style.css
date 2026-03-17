@@ -3,6 +3,15 @@
    Only things Tailwind can't handle via utility classes
    ===================================================== */
 
+
+.logo-lamppost {
+    height: 3.5em;
+    width: auto;
+    mix-blend-mode: multiply;
+    position: relative;
+    top: 0.4em;
+}
+
 html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -40,7 +49,7 @@ details[open] .faq-chevron {
     .hero-mascot { top: 47%; right: -50%; }
 }
 @media (min-width: 1280px) {
-    .hero-phone  { right: -10%; }
-    .hero-mascot { top: 47%; right: -46%; }
+    .hero-phone  { right: -20%; }
+    .hero-mascot { top: 47%; right: -40%; }
 }
 
